@@ -1,18 +1,17 @@
 {
-    "id": "docker-in-docker-gitpod",
+    "id": "docker-outside-docker-gitpod",
     "version": "1.0.0",
     "options": {
     },
     "entrypoint": "/usr/local/share/docker-init.sh",
-    "privileged": true,
     "containerEnv": {
         "DOCKER_BUILDKIT": "1"
     },
     "mounts": [
         {
-            "source": "dind-var-lib-docker-${devcontainerId}",
-            "target": "/var/lib/docker",
-            "type": "volume"
+            "source": "/var/run/docker.sock",
+            "target": "/var/run/docker.sock",
+            "type": "bind"
         }
     ]
 }
